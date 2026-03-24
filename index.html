@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotto — Referencia UI por Variante de Branding</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Nunito:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',system-ui,sans-serif;background:#f5f5f5;color:#1a1a1a;line-height:1.5}
+
+    /* NAV */
+    .nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid #e5e5e5;padding:0 1.5rem}
+    .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:1.1rem;height:48px;overflow-x:auto}
+    .nav-logo{font-weight:900;font-size:.95rem;color:#2DD667;margin-right:auto;white-space:nowrap}
+    .nav a{font-size:.72rem;font-weight:600;color:#888;text-decoration:none;white-space:nowrap;padding:.15rem .45rem;border-radius:5px;transition:all .2s}
+    .nav a:hover{color:#1a1a1a;background:#f0f0f0}
+
+    /* COVER */
+    .cover{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:#0a0a0a;color:#fff;padding:2rem;position:relative;overflow:hidden}
+    .cover::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 40%,rgba(45,214,103,.12) 0%,transparent 50%),radial-gradient(ellipse at 70% 60%,rgba(108,63,197,.08) 0%,transparent 50%)}
+    .cover>*{position:relative;z-index:1}
+    .cover h1{font-size:clamp(2.5rem,7vw,5rem);font-weight:900;letter-spacing:-2px;background:linear-gradient(135deg,#2DD667,#3B82F6,#6C3FC5,#E8C547);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .cover .sub{font-size:1.1rem;color:rgba(255,255,255,.5);margin:.4rem 0}
+    .cover .desc{font-size:.82rem;color:rgba(255,255,255,.25);max-width:520px;margin:.5rem auto 1.5rem}
+    .chips{display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center}
+    .chip{font-size:.65rem;font-weight:600;padding:.25rem .7rem;border-radius:100px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.5)}
+
+    /* SECTION */
+    .vs{padding:4rem 0}
+    .vs-in{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+    .vs-hdr{text-align:center;margin-bottom:2rem}
+    .vs-lbl{display:inline-block;font-size:.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:.25rem .8rem;border-radius:100px;margin-bottom:.5rem}
+    .vs-hdr h2{font-size:1.8rem;font-weight:800;letter-spacing:-1px;margin-bottom:.3rem}
+    .vs-hdr p{font-size:.88rem;max-width:450px;margin:0 auto;opacity:.5}
+
+    /* PHONE */
+    .phones{display:flex;gap:1.25rem;justify-content:center;flex-wrap:wrap;margin-top:1.5rem}
+    .pw{text-align:center}
+    .pw-lbl{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.5rem;opacity:.45}
+    .ph{width:220px;border-radius:24px;padding:7px;background:#1a1a1a;box-shadow:0 10px 36px rgba(0,0,0,.18);display:inline-block}
+    .sc{border-radius:19px;overflow:hidden;min-height:420px;padding:.9rem;font-size:.72rem;display:flex;flex-direction:column}
+
+    /* Screen elements */
+    .sb{display:flex;justify-content:space-between;font-size:.55rem;font-weight:600;margin-bottom:.8rem;opacity:.3}
+    .mode-toggle{display:flex;align-items:center;gap:.3rem;font-size:.5rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:.7rem}
+    .toggle-pill{width:28px;height:15px;border-radius:8px;position:relative;display:inline-block}
+    .toggle-pill::after{content:'';position:absolute;top:2px;width:11px;height:11px;border-radius:50%;transition:left .2s}
+    .toggle-on::after{left:14px}
+    .toggle-off::after{left:2px}
+    .logo-bottom{font-weight:900;font-size:.65rem;letter-spacing:-.3px;text-align:center;opacity:.12;margin-top:auto;padding-top:.8rem}
+    .logo-dot{display:inline-block;width:4px;height:4px;border-radius:50%;margin-left:1px;vertical-align:middle}
+    .greeting{font-size:1.05rem;font-weight:700;margin-bottom:.1rem}
+    .subtitle{font-size:.65rem;opacity:.4;margin-bottom:.8rem}
+    .search{border-radius:8px;padding:.55rem .7rem;font-size:.65rem;display:flex;align-items:center;gap:.3rem;margin-bottom:.8rem}
+    .map-area{border-radius:8px;height:110px;margin-bottom:.6rem;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:600;opacity:.3}
+    .pin{position:absolute;padding:.15rem .4rem;border-radius:6px;font-size:.5rem;font-weight:700;display:flex;align-items:center;gap:.15rem}
+    .pin-arrow{position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent}
+    .filter-row{display:flex;gap:.25rem;margin-bottom:.6rem;overflow:hidden}
+    .filter-chip{font-size:.5rem;font-weight:600;padding:.2rem .5rem;border-radius:6px;white-space:nowrap;display:flex;align-items:center;gap:.2rem}
+    .sc-card{border-radius:8px;padding:.6rem;margin-bottom:.4rem}
+    .sc-card-top{display:flex;justify-content:space-between;align-items:flex-start}
+    .sc-card .t{font-weight:700;font-size:.7rem}
+    .sc-card .d{font-size:.55rem;opacity:.4;margin-top:.05rem}
+    .sc-card .p{font-weight:700;font-size:.82rem;margin-top:.2rem}
+    .sc-tag{display:inline-block;padding:.1rem .35rem;border-radius:4px;font-size:.48rem;font-weight:700}
+    .sc-btn{width:100%;padding:.55rem;border:none;border-radius:8px;font-size:.7rem;font-weight:700;text-align:center;margin-top:.4rem}
+
+    /* Detail screen */
+    .det-type{font-size:.48rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:.35rem .6rem;border-radius:6px;margin-bottom:.5rem;display:flex;align-items:center;gap:.25rem}
+    .det-desc{font-size:.6rem;opacity:.5;margin-bottom:.7rem}
+    .det-pay-label{font-size:.62rem;font-weight:600;margin-bottom:.3rem}
+    .det-pay{border-radius:8px;padding:.5rem .6rem;margin-bottom:.6rem;display:flex;align-items:center;justify-content:space-between;border-width:1.5px;border-style:solid}
+    .det-pay-name{font-size:.65rem;font-weight:600;display:flex;align-items:center;gap:.3rem}
+    .det-price-big{font-size:1.1rem;font-weight:800}
+    .det-price-note{font-size:.5rem;opacity:.35}
+
+    /* Host screen */
+    .host-balance{border-radius:10px;padding:.8rem;margin-bottom:.7rem}
+    .host-bal-lbl{font-size:.45rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.5;margin-bottom:.2rem}
+    .host-bal-num{font-size:1.3rem;font-weight:800;margin-bottom:.15rem}
+    .host-bal-sub{font-size:.52rem;opacity:.4}
+    .host-bal-row{display:flex;justify-content:space-between;align-items:center}
+    .host-bal-btn{font-size:.5rem;font-weight:700;padding:.2rem .5rem;border-radius:5px;border:1px solid}
+    .host-income{margin-bottom:.3rem;display:flex;align-items:center;gap:.4rem;padding:.4rem 0;border-bottom:1px solid rgba(0,0,0,.04)}
+    .host-income-icon{width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.55rem}
+    .host-income .car{font-size:.62rem;font-weight:600}
+    .host-income .time{font-size:.5rem;opacity:.35}
+    .host-income .amt{font-size:.65rem;font-weight:700;margin-left:auto}
+
+    /* Activity screen */
+    .act-item{display:flex;align-items:center;gap:.4rem;padding:.5rem 0;border-bottom:1px solid rgba(0,0,0,.04)}
+    .act-icon{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.5rem}
+    .act-item .name{font-size:.65rem;font-weight:600}
+    .act-item .info{font-size:.5rem;opacity:.35}
+    .act-item .cost{font-size:.65rem;font-weight:700;margin-left:auto}
+
+    /* Profile screen */
+    .prof-avatar{width:48px;height:48px;border-radius:50%;margin:1rem auto .5rem;display:flex;align-items:center;justify-content:center;font-size:1rem}
+    .prof-name{text-align:center;font-size:.85rem;font-weight:700;margin-bottom:.05rem}
+    .prof-email{text-align:center;font-size:.55rem;opacity:.4;margin-bottom:1rem}
+    .prof-item{display:flex;align-items:center;gap:.5rem;padding:.55rem 0;border-bottom:1px solid rgba(0,0,0,.04);font-size:.65rem}
+    .prof-item-icon{width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.55rem}
+
+    /* Tab bar */
+    .tab-bar{display:flex;justify-content:space-around;padding:.4rem 0 .2rem;margin-top:auto;border-top:1px solid rgba(0,0,0,.06)}
+    .tab{text-align:center;font-size:.45rem;font-weight:600;opacity:.35;display:flex;flex-direction:column;align-items:center;gap:.1rem}
+    .tab.active{opacity:1}
+    .tab-icon{font-size:.7rem}
+
+    /* ══ VARIANT STYLES ══ */
+    /* V1 URBAN PULSE */
+    .V1{background:#0d1a0d;color:#F5F5F0}
+    .V1 .vs-lbl{background:#2DD667;color:#0d1a0d}
+    .V1 .vs-hdr h2{color:#2DD667}
+    .V1 .vs-hdr p{color:rgba(245,245,240,.4)}
+    .V1 .pw-lbl{color:#2DD667}
+    .V1 .sc{background:#111;color:#F5F5F0;font-family:'Inter',sans-serif}
+    .V1 .mode-toggle{color:#2DD667}
+    .V1 .toggle-pill{background:#2DD667}
+    .V1 .toggle-pill::after{background:#0d1a0d}
+    .V1 .logo-bottom{color:#2DD667}
+    .V1 .logo-dot{background:#2DD667}
+    .V1 .search{background:#222;color:rgba(245,245,240,.35)}
+    .V1 .map-area{background:linear-gradient(135deg,#1a2b1a,#0d1a0d)}
+    .V1 .pin{background:#1a1a1a;color:#F5F5F0;border:1px solid rgba(45,214,103,.3)}
+    .V1 .pin .star{color:#FFD23F}
+    .V1 .pin-arrow{border-top-color:#1a1a1a}
+    .V1 .filter-chip{background:#222;color:#2DD667;border:1px solid rgba(45,214,103,.2)}
+    .V1 .sc-card{background:#1a1a1a;border:1px solid rgba(45,214,103,.1)}
+    .V1 .sc-card .p{color:#2DD667}
+    .V1 .sc-tag{background:rgba(45,214,103,.12);color:#2DD667}
+    .V1 .sc-btn{background:#2DD667;color:#0d1a0d}
+    .V1 .det-type{background:rgba(45,214,103,.1);color:#2DD667}
+    .V1 .det-pay{border-color:#2DD667;background:rgba(45,214,103,.05)}
+    .V1 .det-price-big{color:#2DD667}
+    .V1 .host-balance{background:#1a1a1a;border:1px solid rgba(45,214,103,.15)}
+    .V1 .host-bal-num{color:#2DD667}
+    .V1 .host-bal-btn{color:#2DD667;border-color:rgba(45,214,103,.3)}
+    .V1 .host-income-icon{background:rgba(45,214,103,.1);color:#2DD667}
+    .V1 .host-income .amt{color:#2DD667}
+    .V1 .act-icon{background:rgba(45,214,103,.1);color:#2DD667}
+    .V1 .act-item .cost{color:#2DD667}
+    .V1 .prof-avatar{background:#2DD667;color:#0d1a0d}
+    .V1 .prof-item-icon{background:rgba(45,214,103,.1);color:#2DD667}
+    .V1 .tab.active{color:#2DD667}
+    .V1 .tab-bar{border-color:rgba(255,255,255,.06)}
+    .V1 .host-income,.V1 .act-item,.V1 .prof-item{border-color:rgba(255,255,255,.04)}
+
+    /* V2 FRIENDLY NAVIGATOR */
+    .V2{background:#fff;color:#1E3A5F}
+    .V2 .vs-lbl{background:#3B82F6;color:#fff}
+    .V2 .vs-hdr h2{color:#3B82F6;font-family:'Nunito'}
+    .V2 .vs-hdr p{color:#6B8AB0}
+    .V2 .pw-lbl{color:#3B82F6}
+    .V2 .sc{background:#fff;color:#1E3A5F;font-family:'Nunito',sans-serif}
+    .V2 .mode-toggle{color:#3B82F6}
+    .V2 .toggle-pill{background:#3B82F6}
+    .V2 .toggle-pill::after{background:#fff}
+    .V2 .logo-bottom{color:#3B82F6}
+    .V2 .logo-dot{background:#34D399}
+    .V2 .search{background:#EFF6FF;color:#6B8AB0;border:1px solid #dbeafe}
+    .V2 .map-area{background:linear-gradient(135deg,#EFF6FF,#dbeafe)}
+    .V2 .pin{background:#3B82F6;color:#fff}
+    .V2 .pin .star{color:#FFD23F}
+    .V2 .pin-arrow{border-top-color:#3B82F6}
+    .V2 .filter-chip{background:#EFF6FF;color:#3B82F6;border:1px solid #dbeafe}
+    .V2 .sc-card{background:#F8FBFF;border:1px solid #dbeafe}
+    .V2 .sc-card .p{color:#3B82F6}
+    .V2 .sc-tag{background:#ECFDF5;color:#059669}
+    .V2 .sc-btn{background:#3B82F6;color:#fff;border-radius:14px}
+    .V2 .det-type{background:#ECFDF5;color:#059669}
+    .V2 .det-pay{border-color:#3B82F6;background:#EFF6FF}
+    .V2 .det-price-big{color:#3B82F6}
+    .V2 .host-balance{background:#1E3A5F;color:#fff}
+    .V2 .host-bal-num{color:#fff}
+    .V2 .host-bal-btn{color:#34D399;border-color:rgba(52,211,153,.4)}
+    .V2 .host-income-icon{background:#EFF6FF;color:#3B82F6}
+    .V2 .host-income .amt{color:#3B82F6}
+    .V2 .act-icon{background:#EFF6FF;color:#3B82F6}
+    .V2 .act-item .cost{color:#3B82F6}
+    .V2 .prof-avatar{background:#3B82F6;color:#fff}
+    .V2 .prof-item-icon{background:#EFF6FF;color:#3B82F6}
+    .V2 .tab.active{color:#3B82F6}
+
+    /* V3 SIGNAL */
+    .V3{background:#F8F7FF;color:#1C1033}
+    .V3 .vs-lbl{background:#6C3FC5;color:#fff}
+    .V3 .vs-hdr h2{color:#6C3FC5;font-family:'Plus Jakarta Sans'}
+    .V3 .vs-hdr p{color:#6a5a8a}
+    .V3 .pw-lbl{color:#6C3FC5}
+    .V3 .sc{background:#F8F7FF;color:#1C1033;font-family:'Plus Jakarta Sans',sans-serif}
+    .V3 .mode-toggle{color:#6C3FC5}
+    .V3 .toggle-pill{background:#6C3FC5}
+    .V3 .toggle-pill::after{background:#fff}
+    .V3 .logo-bottom{color:#6C3FC5}
+    .V3 .logo-dot{background:#00D68F}
+    .V3 .search{background:#fff;color:#6a5a8a;border:1.5px solid rgba(108,63,197,.15)}
+    .V3 .map-area{background:linear-gradient(135deg,#EDE9FE,#F8F7FF)}
+    .V3 .pin{background:#1C1033;color:#fff}
+    .V3 .pin .star{color:#00D68F}
+    .V3 .pin-arrow{border-top-color:#1C1033}
+    .V3 .filter-chip{background:#fff;color:#6C3FC5;border:1px solid rgba(108,63,197,.15)}
+    .V3 .sc-card{background:#fff;border:1px solid rgba(108,63,197,.08);box-shadow:0 1px 3px rgba(108,63,197,.04)}
+    .V3 .sc-card .p{color:#6C3FC5}
+    .V3 .sc-tag{background:rgba(0,214,143,.1);color:#00D68F}
+    .V3 .sc-btn{background:#6C3FC5;color:#fff}
+    .V3 .det-type{background:rgba(0,214,143,.08);color:#00D68F}
+    .V3 .det-pay{border-color:#6C3FC5;background:rgba(108,63,197,.04)}
+    .V3 .det-price-big{color:#6C3FC5}
+    .V3 .host-balance{background:#1C1033;color:#fff}
+    .V3 .host-bal-num{color:#fff}
+    .V3 .host-bal-btn{color:#00D68F;border-color:rgba(0,214,143,.4)}
+    .V3 .host-income-icon{background:rgba(108,63,197,.06);color:#6C3FC5}
+    .V3 .host-income .amt{color:#6C3FC5}
+    .V3 .act-icon{background:rgba(108,63,197,.06);color:#6C3FC5}
+    .V3 .act-item .cost{color:#6C3FC5}
+    .V3 .prof-avatar{background:#6C3FC5;color:#fff}
+    .V3 .prof-item-icon{background:rgba(108,63,197,.06);color:#6C3FC5}
+    .V3 .tab.active{color:#6C3FC5}
+
+    /* V4 TERRACOTTA */
+    .V4{background:#FAF5F2;color:#1F1A17}
+    .V4 .vs-lbl{background:#D4553A;color:#fff}
+    .V4 .vs-hdr h2{color:#D4553A;font-family:'Outfit'}
+    .V4 .vs-hdr p{color:#8a6e60}
+    .V4 .pw-lbl{color:#D4553A}
+    .V4 .sc{background:#FAF5F2;color:#1F1A17;font-family:'Outfit',sans-serif}
+    .V4 .mode-toggle{color:#D4553A}
+    .V4 .toggle-pill{background:#D4553A}
+    .V4 .toggle-pill::after{background:#fff}
+    .V4 .logo-bottom{color:#1F1A17}
+    .V4 .logo-dot{background:#D4553A}
+    .V4 .search{background:#fff;color:#8a6e60;border:1px solid #e8ddd6}
+    .V4 .map-area{background:linear-gradient(135deg,#f0e6de,#FAF5F2)}
+    .V4 .pin{background:#1F1A17;color:#FAF5F2}
+    .V4 .pin .star{color:#D4553A}
+    .V4 .pin-arrow{border-top-color:#1F1A17}
+    .V4 .filter-chip{background:#fff;color:#D4553A;border:1px solid rgba(212,85,58,.15)}
+    .V4 .sc-card{background:#fff;border:1px solid #e8ddd6}
+    .V4 .sc-card .p{color:#D4553A}
+    .V4 .sc-tag{background:rgba(52,211,153,.1);color:#059669}
+    .V4 .sc-btn{background:#D4553A;color:#fff}
+    .V4 .det-type{background:rgba(52,211,153,.08);color:#059669}
+    .V4 .det-pay{border-color:#D4553A;background:rgba(212,85,58,.04)}
+    .V4 .det-price-big{color:#D4553A}
+    .V4 .host-balance{background:#1F1A17;color:#FAF5F2}
+    .V4 .host-bal-num{color:#fff}
+    .V4 .host-bal-btn{color:#D4553A;border-color:rgba(212,85,58,.4)}
+    .V4 .host-income-icon{background:rgba(212,85,58,.08);color:#D4553A}
+    .V4 .host-income .amt{color:#D4553A}
+    .V4 .act-icon{background:rgba(212,85,58,.08);color:#D4553A}
+    .V4 .act-item .cost{color:#D4553A}
+    .V4 .prof-avatar{background:#D4553A;color:#fff}
+    .V4 .prof-item-icon{background:rgba(212,85,58,.08);color:#D4553A}
+    .V4 .tab.active{color:#D4553A}
+
+    /* V5 CLEAN MAP */
+    .V5{background:#fff;color:#111827;border-top:1px solid #E5E7EB}
+    .V5 .vs-lbl{background:#111827;color:#fff}
+    .V5 .vs-hdr h2{color:#111827}
+    .V5 .vs-hdr p{color:#9CA3AF}
+    .V5 .pw-lbl{color:#6B7280}
+    .V5 .sc{background:#fff;color:#111827;font-family:'Inter',sans-serif}
+    .V5 .mode-toggle{color:#6B7280}
+    .V5 .toggle-pill{background:#111827}
+    .V5 .toggle-pill::after{background:#fff}
+    .V5 .logo-bottom{color:#111827}
+    .V5 .logo-dot{background:#10B981}
+    .V5 .search{background:#F3F4F6;color:#9CA3AF;border:1px solid #E5E7EB}
+    .V5 .map-area{background:#F9FAFB;border:1px solid #E5E7EB}
+    .V5 .pin{background:#111827;color:#fff}
+    .V5 .pin .star{color:#F59E0B}
+    .V5 .pin-arrow{border-top-color:#111827}
+    .V5 .filter-chip{background:#F3F4F6;color:#374151;border:1px solid #E5E7EB}
+    .V5 .sc-card{background:#F9FAFB;border:1px solid #E5E7EB}
+    .V5 .sc-card .p{color:#111827;font-weight:800}
+    .V5 .sc-tag{background:#ECFDF5;color:#059669}
+    .V5 .sc-btn{background:#111827;color:#fff}
+    .V5 .det-type{background:#ECFDF5;color:#059669}
+    .V5 .det-pay{border-color:#111827;background:#F9FAFB}
+    .V5 .det-price-big{color:#111827}
+    .V5 .host-balance{background:#111827;color:#fff}
+    .V5 .host-bal-num{color:#fff}
+    .V5 .host-bal-btn{color:#10B981;border-color:rgba(16,185,129,.4)}
+    .V5 .host-income-icon{background:#F3F4F6;color:#374151}
+    .V5 .host-income .amt{color:#111827}
+    .V5 .act-icon{background:#F3F4F6;color:#374151}
+    .V5 .act-item .cost{color:#111827}
+    .V5 .prof-avatar{background:#111827;color:#fff}
+    .V5 .prof-item-icon{background:#F3F4F6;color:#374151}
+    .V5 .tab.active{color:#111827}
+
+    /* COMPARISON */
+    .cmp{max-width:1100px;margin:0 auto;padding:4rem 1.5rem}
+    .cmp h2{text-align:center;font-size:1.7rem;font-weight:800;letter-spacing:-1px;margin-bottom:1.5rem}
+    .cmp table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04);font-size:.72rem}
+    .cmp th{padding:.55rem .7rem;font-size:.58rem;text-transform:uppercase;letter-spacing:1px;color:#fff;text-align:center}
+    .cmp th:first-child{text-align:left;background:#555}
+    .cmp td{padding:.45rem .7rem;border-bottom:1px solid #f0f0f0;text-align:center;color:#666}
+    .cmp td:first-child{text-align:left;font-weight:600;color:#333;background:#fafafa}
+    .cmp tr:last-child td{border-bottom:none}
+    .th1{background:#1a8a45}.th2{background:#2563EB}.th3{background:#5B2DA8}.th4{background:#D4553A}.th5{background:#374151}
+
+    @media(max-width:700px){.phones{gap:.75rem}.ph{width:180px}.sc{min-height:360px}}
+  </style>
+</head>
+<body>
+
+<nav class="nav"><div class="nav-inner">
+  <span class="nav-logo">SPOTTO UI</span>
+  <a href="#v1">Urban Pulse</a><a href="#v2">Friendly Nav.</a><a href="#v3">Signal</a><a href="#v4">Terracotta</a><a href="#v5">Clean Map</a><a href="#cmp">Comparativa</a>
+</div></nav>
+
+<section class="cover">
+  <h1>SPOTTO</h1>
+  <p class="sub">Referencia de Interfaz Visual</p>
+  <p class="desc">5 variantes de branding aplicadas a las pantallas reales de la app. Basado en spotto-app-83049.web.app y el bot de WhatsApp.</p>
+  <div class="chips"><span class="chip">Modo Conductor</span><span class="chip">Modo Anfitrion</span><span class="chip">Bot WhatsApp</span><span class="chip">Mercado Pago</span><span class="chip">Mapa CABA</span><span class="chip">Filtros</span></div>
+</section>
+
+<script>
+// Generate all 5 variants with the same screens but different styling
+const variants = [
+  { id:'v1', cls:'V1', num:'01', name:'Urban Pulse', desc:'Dark mode challenger. Verde vibrante sobre negro.' },
+  { id:'v2', cls:'V2', num:'02', name:'Friendly Navigator', desc:'Light mode amigable. Azul cielo para todas las edades.' },
+  { id:'v3', cls:'V3', num:'03', name:'Signal', desc:'Violeta distintivo. Personalidad unica e inconfundible.' },
+  { id:'v4', cls:'V4', num:'04', name:'Terracotta', desc:'Coral calido sobre crema. Calidez urbana, confianza y caracter.' },
+  { id:'v5', cls:'V5', num:'05', name:'Clean Map', desc:'Minimalismo funcional. La informacion es protagonista.' },
+];
+
+function screenExplorar(v) {
+  return `<div class="sc">
+    <div class="sb"><span>9:41</span><span>100%</span></div>
+    <div class="mode-toggle"><span class="toggle-pill toggle-on"></span> MODO CONDUCTOR</div>
+    <div class="greeting">Hola, Nahuel!</div>
+    <div class="subtitle">A donde vas hoy?</div>
+    <div class="search">&#x1F50D; A donde vas hoy, Nahuel?</div>
+    <div class="map-area">
+      <div class="pin" style="top:18%;left:22%"><span class="star">&#9733;</span> 4.9 &middot; $1500<span class="pin-arrow"></span></div>
+      <div class="pin" style="top:35%;left:58%"><span class="star">&#9733;</span> 5.0 &middot; $1800<span class="pin-arrow"></span></div>
+      <div class="pin" style="top:60%;left:40%"><span class="star">&#9733;</span> 4.7 &middot; $1200<span class="pin-arrow"></span></div>
+      MAPA CABA
+    </div>
+    <div class="filter-row">
+      <span class="filter-chip">&#x1F698; SUV/Camioneta</span>
+      <span class="filter-chip">&#x1F3E0; Porton Electrico</span>
+      <span class="filter-chip">&#x1F512; Seguridad 24h</span>
+    </div>
+    <div class="sc-card"><div class="sc-card-top"><div><div class="t">Argerich 3095</div><div class="d">Villa del Parque &middot; 350m &middot; &#9733; 4.9</div></div><span class="sc-tag">Disponible</span></div><div class="p">$1.500/h</div></div>
+    <div class="sc-card"><div class="sc-card-top"><div><div class="t">Villa Tesei Garage</div><div class="d">Hurlingham &middot; 1.2km &middot; &#9733; 5.0</div></div><span class="sc-tag">Disponible</span></div><div class="p">$1.200/h</div></div>
+    <div class="tab-bar"><div class="tab active"><span class="tab-icon">&#x1F50D;</span>Explorar</div><div class="tab"><span class="tab-icon">&#x1F553;</span>Actividad</div><div class="tab"><span class="tab-icon">&#x1F464;</span>Perfil</div></div>
+  </div>`;
+}
+
+function screenDetalle(v) {
+  return `<div class="sc">
+    <div class="sb"><span>9:41</span><span>100%</span></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem">
+      <div style="font-size:.85rem;font-weight:700">Argerich 3095</div>
+      <div style="font-size:.65rem;font-weight:600"><span style="color:#F59E0B">&#9733;</span> 4.9 <span style="opacity:.4">(128)</span></div>
+    </div>
+    <div class="det-type">&#x2705; SALIDA DE GARAGE</div>
+    <div class="det-desc">Mano derecha. Cerca de Av. Nazca.</div>
+    <div class="det-pay-label">Confirmar pago con</div>
+    <div class="det-pay"><span class="det-pay-name">&#x1F4B3; Mercado Pago</span><span style="font-size:.6rem">&#x2705;</span></div>
+    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:.15rem">
+      <div class="det-price-big">$1.575,00</div>
+      <span class="sc-tag">1h reservada</span>
+    </div>
+    <div class="det-price-note">precio final (incluye IVA)</div>
+    <div class="sc-btn">PAGAR</div>
+    <div style="font-size:.5rem;opacity:.3;text-align:center;margin-top:.5rem">Cancelacion gratuita hasta 15 min antes</div>
+    <div class="logo-bottom">Spotto<span class="logo-dot"></span></div>
+    <div class="tab-bar"><div class="tab active"><span class="tab-icon">&#x1F50D;</span>Explorar</div><div class="tab"><span class="tab-icon">&#x1F553;</span>Actividad</div><div class="tab"><span class="tab-icon">&#x1F464;</span>Perfil</div></div>
+  </div>`;
+}
+
+function screenAnfitrion(v) {
+  return `<div class="sc">
+    <div class="sb"><span>9:41</span><span>100%</span></div>
+    <div class="mode-toggle"><span class="toggle-pill toggle-off"></span> MODO ANFITRION</div>
+    <div class="greeting">Hola, Nahuel!</div>
+    <div class="subtitle">Tus activos estan generando valor hoy.</div>
+    <div class="host-balance">
+      <div class="host-bal-lbl">Balance disponible</div>
+      <div class="host-bal-num">$58.400,50</div>
+      <div class="host-bal-row"><div class="host-bal-sub">14 reservas este mes</div><span class="host-bal-btn">RETIRAR</span></div>
+    </div>
+    <div style="font-size:.68rem;font-weight:700;margin-bottom:.4rem">Ultimos ingresos</div>
+    <div class="host-income"><span class="host-income-icon">&#x1F698;</span><div><div class="car">Toyota Corolla</div><div class="time">Hace 2hs</div></div><span class="amt">+$1.500</span></div>
+    <div class="host-income"><span class="host-income-icon">&#x1F698;</span><div><div class="car">Ford Fiesta</div><div class="time">Hoy, 10:15</div></div><span class="amt">+$1.500</span></div>
+    <div class="host-income"><span class="host-income-icon">&#x1F698;</span><div><div class="car">Peugeot 208</div><div class="time">Ayer, 16:30</div></div><span class="amt">+$1.200</span></div>
+    <div class="tab-bar"><div class="tab active"><span class="tab-icon">&#x1F4B0;</span>Ganancias</div><div class="tab"><span class="tab-icon">&#x1F4CB;</span>Mis spots</div><div class="tab"><span class="tab-icon">&#x1F464;</span>Perfil</div></div>
+  </div>`;
+}
+
+function screenActividad(v) {
+  return `<div class="sc">
+    <div class="sb"><span>9:41</span><span>100%</span></div>
+    <div style="font-size:.9rem;font-weight:700;margin:.5rem 0 .1rem">Historial</div>
+    <div style="font-size:.6rem;opacity:.35;margin-bottom:.8rem">Tus ultimos estacionamientos realizados.</div>
+    <div class="act-item"><span class="act-icon">&#x1F4CD;</span><div><div class="name">Argerich 3095</div><div class="info">Villa del Parque &middot; Hoy, 10:00 - 12:00</div></div><span class="cost">$3.075,00</span></div>
+    <div class="act-item"><span class="act-icon">&#x1F3E2;</span><div><div class="name">Palermo Soho</div><div class="info">Palermo &middot; 21 Mar, 18:30 - 20:00</div></div><span class="cost">$2.775,00</span></div>
+    <div class="act-item"><span class="act-icon">&#x1F4CD;</span><div><div class="name">Thames 1245</div><div class="info">Palermo &middot; 19 Mar, 09:00 - 11:00</div></div><span class="cost">$4.000,00</span></div>
+    <div class="act-item"><span class="act-icon">&#x1F3E2;</span><div><div class="name">Parking Belgrano</div><div class="info">Belgrano &middot; 17 Mar, 14:00 - 16:30</div></div><span class="cost">$4.500,00</span></div>
+    <div class="logo-bottom">Spotto<span class="logo-dot"></span></div>
+    <div class="tab-bar"><div class="tab"><span class="tab-icon">&#x1F50D;</span>Explorar</div><div class="tab active"><span class="tab-icon">&#x1F553;</span>Actividad</div><div class="tab"><span class="tab-icon">&#x1F464;</span>Perfil</div></div>
+  </div>`;
+}
+
+function screenPerfil(v) {
+  return `<div class="sc">
+    <div class="sb"><span>9:41</span><span>100%</span></div>
+    <div class="prof-avatar">&#x1F464;</div>
+    <div class="prof-name">Nahuel</div>
+    <div class="prof-email">nahuel@spotto.app &middot; Conductor Gold</div>
+    <div class="prof-item"><span class="prof-item-icon">&#x1F698;</span><div><div style="font-weight:600">Mis Vehiculos</div><div style="font-size:.5rem;opacity:.4">3 registrados</div></div></div>
+    <div class="prof-item"><span class="prof-item-icon">&#x1F4B3;</span><div><div style="font-weight:600">Metodos de Pago</div><div style="font-size:.5rem;opacity:.4">Mercado Pago vinculado</div></div></div>
+    <div class="prof-item"><span class="prof-item-icon">&#x2753;</span><div><div style="font-weight:600">Centro de Ayuda</div><div style="font-size:.5rem;opacity:.4">24/7 disponible</div></div></div>
+    <div class="logo-bottom">Spotto<span class="logo-dot"></span></div>
+    <div class="tab-bar"><div class="tab"><span class="tab-icon">&#x1F50D;</span>Explorar</div><div class="tab"><span class="tab-icon">&#x1F553;</span>Actividad</div><div class="tab active"><span class="tab-icon">&#x1F464;</span>Perfil</div></div>
+  </div>`;
+}
+
+let html = '';
+variants.forEach(v => {
+  html += `<section class="vs ${v.cls}" id="${v.id}"><div class="vs-in">
+    <div class="vs-hdr"><span class="vs-lbl">Variante ${v.num}</span><h2>&ldquo;${v.name}&rdquo;</h2><p>${v.desc}</p></div>
+    <div class="phones">
+      <div class="pw"><div class="pw-lbl">Explorar</div><div class="ph">${screenExplorar(v)}</div></div>
+      <div class="pw"><div class="pw-lbl">Detalle + Pago</div><div class="ph">${screenDetalle(v)}</div></div>
+      <div class="pw"><div class="pw-lbl">Modo Anfitrion</div><div class="ph">${screenAnfitrion(v)}</div></div>
+      <div class="pw"><div class="pw-lbl">Historial</div><div class="ph">${screenActividad(v)}</div></div>
+      <div class="pw"><div class="pw-lbl">Perfil</div><div class="ph">${screenPerfil(v)}</div></div>
+    </div>
+  </div></section>`;
+});
+document.body.insertAdjacentHTML('beforeend', html);
+</script>
+
+<!-- COMPARISON -->
+<section class="cmp" id="cmp">
+  <h2>Comparativa</h2>
+  <table>
+    <thead><tr><th style="background:#555;text-align:left">Aspecto</th><th class="th1">Urban Pulse</th><th class="th2">Friendly Nav.</th><th class="th3">Signal</th><th class="th4">Terracotta</th><th class="th5">Clean Map</th></tr></thead>
+    <tbody>
+      <tr><td>Modo</td><td>Dark</td><td>Light</td><td>Light (lavanda)</td><td>Light (crema)</td><td>Light</td></tr>
+      <tr><td>Color</td><td>Verde #2DD667</td><td>Azul #3B82F6</td><td>Violeta #6C3FC5</td><td>Coral #D4553A</td><td>Negro #111827</td></tr>
+      <tr><td>Fuente</td><td>Inter</td><td>Nunito</td><td>Plus Jakarta Sans</td><td>Outfit</td><td>Inter</td></tr>
+      <tr><td>Pins mapa</td><td>Dark + verde glow</td><td>Azul solido</td><td>Dark + verde neon</td><td>Dark + estrella coral</td><td>Negro solido</td></tr>
+      <tr><td>Boton pagar</td><td>Verde vibrante</td><td>Azul redondeado</td><td>Violeta</td><td>Coral solido</td><td>Negro</td></tr>
+      <tr><td>Balance host</td><td>Dark card verde</td><td>Azul profundo</td><td>Violeta profundo</td><td>Espresso oscuro</td><td>Negro</td></tr>
+      <tr><td>Target</td><td>25-45</td><td>Todas las edades</td><td>25-40</td><td>25-50</td><td>25-45</td></tr>
+      <tr><td>Riesgo</td><td>Aliena +50</td><td>Generica</td><td>Polarizante</td><td>Puede parecer food app</td><td>Sin personalidad</td></tr>
+    </tbody>
+  </table>
+</section>
+
+</body>
+</html>
