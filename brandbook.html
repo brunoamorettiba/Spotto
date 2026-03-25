@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spotto — Brandbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --negro: #111827;
+    --negro-soft: #1F2937;
+    --gris-700: #374151;
+    --gris-600: #4B5563;
+    --gris-500: #6B7280;
+    --gris-400: #9CA3AF;
+    --gris-300: #D1D5DB;
+    --gris-200: #E5E7EB;
+    --gris-100: #F3F4F6;
+    --gris-50: #F9FAFB;
+    --blanco: #FFFFFF;
+    --accent-dark: #0F172A;
+    --success: #059669;
+    --success-light: #D1FAE5;
+    --error: #DC2626;
+    --warning: #D97706;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--gris-50);
+    color: var(--negro);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 240px;
+    height: 100vh;
+    background: var(--negro);
+    color: var(--blanco);
+    padding: 32px 24px;
+    overflow-y: auto;
+    z-index: 100;
+  }
+  nav .nav-logo {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+  }
+  /* ─── DOT GLOBAL: circulo verde a media altura de x-height ─── */
+  .dot {
+    display: inline-block;
+    width: 0.18em;
+    height: 0.18em;
+    background: var(--success);
+    border-radius: 50%;
+    position: relative;
+    bottom: 0.18em;
+    margin-left: 0.04em;
+  }
+  .dot--gray { background: var(--gris-300); }
+  .dot--white { background: rgba(255,255,255,0.5); }
+  nav .nav-subtitle {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gris-500);
+    margin-bottom: 40px;
+  }
+  nav a {
+    display: block;
+    color: var(--gris-400);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--blanco); }
+
+  /* ─── MAIN ─── */
+  main {
+    margin-left: 240px;
+    padding: 0;
+  }
+
+  /* ─── SECTIONS ─── */
+  section {
+    padding: 80px 64px;
+    border-bottom: 1px solid var(--gris-200);
+  }
+  section:nth-child(even) { background: var(--blanco); }
+
+  .section-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--gris-500);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .section-desc {
+    font-size: 16px;
+    color: var(--gris-600);
+    max-width: 640px;
+    margin-bottom: 48px;
+    line-height: 1.7;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--negro);
+    color: var(--blanco);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 64px;
+    position: relative;
+  }
+  .hero-logo {
+    font-size: 96px;
+    font-weight: 900;
+    letter-spacing: -4px;
+    margin-bottom: 24px;
+  }
+  .hero-logo .dot { }
+  .hero-tagline {
+    font-size: 18px;
+    color: var(--gris-400);
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+  .hero-version {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--gris-600);
+    margin-top: 48px;
+  }
+
+  /* ─── GRID LAYOUTS ─── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 24px; }
+
+  /* ─── LOGO SECTION ─── */
+  .logo-display {
+    background: var(--blanco);
+    border: 1px solid var(--gris-200);
+    border-radius: 16px;
+    padding: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 240px;
+  }
+  .logo-display.dark {
+    background: var(--negro);
+    border-color: var(--negro);
+  }
+  .logo-display .logo-text {
+    font-size: 56px;
+    font-weight: 900;
+    letter-spacing: -2px;
+    color: var(--negro);
+  }
+  .logo-display.dark .logo-text { color: var(--blanco); }
+  .logo-display .logo-text .dot { }
+  .logo-display.dark .logo-text .dot { }
+
+  .logo-display .logo-icon {
+    font-size: 72px;
+    font-weight: 900;
+    letter-spacing: -2px;
+    color: var(--negro);
+  }
+  .logo-display.dark .logo-icon { color: var(--blanco); }
+  .logo-display .logo-icon .dot { }
+  .logo-display.dark .logo-icon .dot { }
+
+  .logo-caption {
+    font-size: 13px;
+    color: var(--gris-500);
+    text-align: center;
+    margin-top: 16px;
+    font-weight: 500;
+  }
+
+  /* ─── CLEAR SPACE ─── */
+  .clearspace-box {
+    background: var(--blanco);
+    border: 1px solid var(--gris-200);
+    border-radius: 16px;
+    padding: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .clearspace-inner {
+    border: 2px dashed var(--gris-300);
+    padding: 32px 48px;
+    position: relative;
+  }
+  .clearspace-inner .logo-text {
+    font-size: 48px;
+    font-weight: 900;
+    letter-spacing: -2px;
+  }
+  .clearspace-inner .dot { }
+  .clearspace-label {
+    position: absolute;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--gris-400);
+    font-weight: 600;
+  }
+  .clearspace-label.top { top: -20px; left: 50%; transform: translateX(-50%); }
+  .clearspace-label.bottom { bottom: -20px; left: 50%; transform: translateX(-50%); }
+  .clearspace-label.left { left: -60px; top: 50%; transform: translateY(-50%) rotate(-90deg); }
+  .clearspace-label.right { right: -60px; top: 50%; transform: translateY(-50%) rotate(90deg); }
+
+  /* ─── DONT DO ─── */
+  .dont-card {
+    background: var(--blanco);
+    border: 1px solid var(--gris-200);
+    border-radius: 12px;
+    padding: 32px;
+    text-align: center;
+  }
+  .dont-card .example {
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  .dont-card .label {
+    font-size: 13px;
+    color: var(--error);
+    font-weight: 600;
+  }
+  .dont-card .desc {
+    font-size: 12px;
+    color: var(--gris-500);
+    margin-top: 4px;
+  }
+
+  /* ─── COLORS ─── */
+  .color-card {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--gris-200);
+  }
+  .color-swatch {
+    height: 140px;
+    display: flex;
+    align-items: flex-end;
+    padding: 16px;
+  }
+  .color-info {
+    padding: 16px;
+    background: var(--blanco);
+  }
+  .color-name {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .color-hex {
+    font-size: 13px;
+    color: var(--gris-500);
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+  .color-role {
+    font-size: 11px;
+    color: var(--gris-400);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* ─── TYPOGRAPHY ─── */
+  .type-specimen {
+    background: var(--blanco);
+    border: 1px solid var(--gris-200);
+    border-radius: 16px;
+    padding: 40px;
+    margin-bottom: 24px;
+  }
+  .type-weight-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gris-400);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .type-sample {
+    margin-bottom: 8px;
+    color: var(--negro);
+  }
+  .type-meta {
+    font-size: 12px;
+    color: var(--gris-400);
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+
+  .scale-row {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--gris-100);
+  }
+  .scale-row:last-child { border-bottom: none; }
+  .scale-label {
+    font-size: 12px;
+    color: var(--gris-400);
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    min-width: 120px;
+    flex-shrink: 0;
+  }
+
+  /* ─── TONE ─── */
+  .tone-card {
+    background: var(--blanco);
+    border: 1px solid var(--gris-200);
+    border-radius: 12px;
+    padding: 32px;
+  }
+  .tone-do {
+    color: var(--success);
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+  .tone-dont {
+    color: var(--error);
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+  .tone-example {
+    font-size: 15px;
+    color: var(--negro);
+    font-style: italic;
+    line-height: 1.6;
+  }
+  .tone-tag {
+    display: inline-block;
+    background: var(--gris-100);
+    border-radius: 6px;
+    padding: 4px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gris-700);
+    margin: 4px 4px 4px 0;
+  }
+
+  /* ─── VALORES ─── */
+  .value-card {
+    background: var(--blanco);
+    border: 1px solid var(--gris-200);
+    border-radius: 16px;
+    padding: 32px;
+  }
+  .value-icon {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+  .value-name {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .value-desc {
+    font-size: 14px;
+    color: var(--gris-600);
+    line-height: 1.6;
+  }
+
+  /* ─── APP PREVIEW ─── */
+  .app-frame {
+    background: var(--blanco);
+    border-radius: 32px;
+    border: 3px solid var(--negro);
+    padding: 24px;
+    max-width: 320px;
+    margin: 0 auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+  }
+  .app-statusbar {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: var(--negro);
+  }
+  .app-greeting {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--gris-400);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .app-title {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+  .app-subtitle {
+    font-size: 14px;
+    color: var(--gris-500);
+    margin-bottom: 24px;
+  }
+  .app-searchbar {
+    background: var(--gris-100);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 14px;
+    color: var(--gris-400);
+    margin-bottom: 24px;
+  }
+  .app-card {
+    background: var(--gris-50);
+    border: 1px solid var(--gris-200);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+  }
+  .app-card-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  .app-card-meta {
+    font-size: 12px;
+    color: var(--gris-500);
+  }
+  .app-card-price {
+    font-size: 18px;
+    font-weight: 800;
+    margin-top: 8px;
+  }
+  .app-available {
+    display: inline-block;
+    background: var(--success-light);
+    color: var(--success);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .app-navbar {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 16px;
+    margin-top: 24px;
+    border-top: 1px solid var(--gris-200);
+    font-size: 11px;
+    color: var(--gris-400);
+    font-weight: 600;
+  }
+  .app-navbar span.active { color: var(--negro); }
+
+  /* ─── BUTTON STYLES ─── */
+  .btn-primary {
+    background: var(--negro);
+    color: var(--blanco);
+    border: none;
+    border-radius: 12px;
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+  }
+  .btn-secondary {
+    background: var(--blanco);
+    color: var(--negro);
+    border: 2px solid var(--gris-200);
+    border-radius: 12px;
+    padding: 14px 32px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    display: inline-block;
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--negro);
+    border: none;
+    padding: 14px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    text-decoration: underline;
+    display: inline-block;
+  }
+
+  /* ─── ICONOGRAPHY ─── */
+  .icon-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+  }
+  .icon-item {
+    background: var(--blanco);
+    border: 1px solid var(--gris-200);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+  }
+  .icon-item svg {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 8px;
+  }
+  .icon-item .icon-label {
+    font-size: 11px;
+    color: var(--gris-500);
+  }
+
+  /* ─── SPACING ─── */
+  .spacing-demo {
+    display: flex;
+    gap: 16px;
+    align-items: flex-end;
+  }
+  .spacing-block {
+    background: var(--negro);
+    border-radius: 4px;
+  }
+  .spacing-label {
+    font-size: 11px;
+    color: var(--gris-500);
+    text-align: center;
+    margin-top: 8px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    nav { display: none; }
+    main { margin-left: 0; }
+    section { padding: 48px 32px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .hero-logo { font-size: 56px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Spotto<span class="dot"></span></div>
+  <div class="nav-subtitle">Brandbook v1.0</div>
+  <a href="#hero">Intro</a>
+  <a href="#esencia">Esencia de marca</a>
+  <a href="#logo">Logo</a>
+  <a href="#colores">Colores</a>
+  <a href="#tipografia">Tipografia</a>
+  <a href="#tono">Tono de voz</a>
+  <a href="#componentes">Componentes UI</a>
+  <a href="#aplicaciones">Aplicaciones</a>
+  <a href="#donts">Usos incorrectos</a>
+</nav>
+
+<main>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero" id="hero">
+  <div class="hero-logo">Spotto<span class="dot"></span></div>
+  <div class="hero-tagline">Estacionamiento colaborativo para Buenos Aires</div>
+  <div class="hero-version">Brandbook — Variante "Clean Map" — Marzo 2026</div>
+</section>
+
+<!-- ═══════════════ ESENCIA ═══════════════ -->
+<section id="esencia">
+  <div class="section-label">01 — Esencia</div>
+  <div class="section-title">La marca Spotto</div>
+  <div class="section-desc">
+    Spotto nace para resolver el caos del estacionamiento en Buenos Aires con economia colaborativa. Conectamos conductores con propietarios de garages disponibles. Somos el vecino que te da una mano.
+  </div>
+
+  <div class="grid-3" style="margin-bottom: 48px;">
+    <div class="value-card">
+      <div class="value-name">Mision</div>
+      <div class="value-desc">Hacer que estacionar en Buenos Aires sea facil, legal y accesible para todos.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-name">Vision</div>
+      <div class="value-desc">Ser la referencia de estacionamiento colaborativo en las grandes ciudades de Latinoamerica.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-name">Propuesta de valor</div>
+      <div class="value-desc">Encontra lugar rapido, legal y mas barato que un garage. Monetiza tu bajada cuando no la usas.</div>
+    </div>
+  </div>
+
+  <div class="section-label" style="margin-top: 48px;">Valores de marca</div>
+  <div class="grid-4" style="margin-top: 24px;">
+    <div class="value-card">
+      <div class="value-icon">&#9881;</div>
+      <div class="value-name">Practicidad</div>
+      <div class="value-desc">Todo tiene que funcionar rapido y sin vueltas. La informacion es protagonista.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">&#9673;</div>
+      <div class="value-name">Transparencia</div>
+      <div class="value-desc">Precios claros, reglas simples, sin letra chica. Lo que ves es lo que pagas.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">&#9733;</div>
+      <div class="value-name">Comunidad</div>
+      <div class="value-desc">Somos red de vecinos, no una corporacion. El barrio es nuestro territorio.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">&#10003;</div>
+      <div class="value-name">Confianza</div>
+      <div class="value-desc">Cada spot tiene rating, cada pago es seguro, cada reserva se cumple.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ LOGO ═══════════════ -->
+<section id="logo">
+  <div class="section-label">02 — Logo</div>
+  <div class="section-title">Wordmark + Dot</div>
+  <div class="section-desc">
+    El logo de Spotto es un wordmark tipografico con un punto distintivo al final. El punto representa el "spot" — el destino, el lugar encontrado. Es un elemento silencioso pero memorable.
+  </div>
+
+  <!-- Versiones principales -->
+  <div class="grid-2" style="margin-bottom: 32px;">
+    <div>
+      <div class="logo-display">
+        <span class="logo-text">Spotto<span class="dot"></span></span>
+      </div>
+      <div class="logo-caption">Primario — Fondo claro</div>
+    </div>
+    <div>
+      <div class="logo-display dark">
+        <span class="logo-text">Spotto<span class="dot"></span></span>
+      </div>
+      <div class="logo-caption">Primario — Fondo oscuro</div>
+    </div>
+  </div>
+
+  <div class="grid-3" style="margin-bottom: 48px;">
+    <div>
+      <div class="logo-display" style="min-height: 180px;">
+        <span class="logo-icon">S<span class="dot"></span></span>
+      </div>
+      <div class="logo-caption">Isotipo — App icon</div>
+    </div>
+    <div>
+      <div class="logo-display dark" style="min-height: 180px;">
+        <span class="logo-icon">S<span class="dot"></span></span>
+      </div>
+      <div class="logo-caption">Isotipo — Dark</div>
+    </div>
+    <div>
+      <div class="logo-display" style="min-height: 180px; background: var(--gris-100);">
+        <span class="logo-text" style="font-size: 36px; color: var(--gris-400);">Spotto<span class="dot dot--gray"></span></span>
+      </div>
+      <div class="logo-caption">Monocromo gris — Watermark</div>
+    </div>
+  </div>
+
+  <!-- Clear space -->
+  <div class="section-label">Espacio de respeto</div>
+  <p style="font-size: 14px; color: var(--gris-600); margin-bottom: 24px;">
+    El area minima de espacio libre alrededor del logo equivale a la altura de la letra "o" del wordmark en todos los lados.
+  </p>
+  <div class="clearspace-box">
+    <div class="clearspace-inner">
+      <span class="logo-text" style="font-size: 48px;">Spotto<span class="dot"></span></span>
+      <span class="clearspace-label top">1x</span>
+      <span class="clearspace-label bottom">1x</span>
+      <span class="clearspace-label left">1x</span>
+      <span class="clearspace-label right">1x</span>
+    </div>
+  </div>
+  <p style="font-size: 12px; color: var(--gris-400); text-align: center; margin-top: 12px;">
+    x = altura de la letra "o" del wordmark
+  </p>
+
+  <!-- Tamano minimo -->
+  <div style="margin-top: 48px;">
+    <div class="section-label">Tamano minimo</div>
+    <div style="display: flex; align-items: flex-end; gap: 48px; margin-top: 24px;">
+      <div style="text-align: center;">
+        <span style="font-size: 16px; font-weight: 900; letter-spacing: -0.5px;">Spotto<span class="dot"></span></span>
+        <div style="font-size: 11px; color: var(--gris-400); margin-top: 8px;">Digital: 80px ancho</div>
+      </div>
+      <div style="text-align: center;">
+        <span style="font-size: 12px; font-weight: 900; letter-spacing: -0.5px;">S<span class="dot"></span></span>
+        <div style="font-size: 11px; color: var(--gris-400); margin-top: 8px;">Isotipo: 24px</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ COLORES ═══════════════ -->
+<section id="colores">
+  <div class="section-label">03 — Colores</div>
+  <div class="section-title">Paleta Clean Map</div>
+  <div class="section-desc">
+    La paleta es monocromatica con base en negro y escala de grises. Minimalismo funcional: la informacion es protagonista, no los colores. Se usan acentos funcionales solo para estados.
+  </div>
+
+  <div class="section-label">Colores primarios</div>
+  <div class="grid-4" style="margin-top: 16px; margin-bottom: 48px;">
+    <div class="color-card">
+      <div class="color-swatch" style="background: #111827;"></div>
+      <div class="color-info">
+        <div class="color-name">Negro Primario</div>
+        <div class="color-hex">#111827</div>
+        <div class="color-role">Textos, CTAs, header</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #1F2937;"></div>
+      <div class="color-info">
+        <div class="color-name">Negro Soft</div>
+        <div class="color-hex">#1F2937</div>
+        <div class="color-role">Fondos oscuros, nav</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #FFFFFF; border-bottom: 1px solid #E5E7EB;"></div>
+      <div class="color-info">
+        <div class="color-name">Blanco</div>
+        <div class="color-hex">#FFFFFF</div>
+        <div class="color-role">Fondo principal, cards</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #F9FAFB; border-bottom: 1px solid #E5E7EB;"></div>
+      <div class="color-info">
+        <div class="color-name">Gris 50</div>
+        <div class="color-hex">#F9FAFB</div>
+        <div class="color-role">Fondo secciones</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Escala de grises</div>
+  <div class="grid-4" style="margin-top: 16px; margin-bottom: 48px;">
+    <div class="color-card">
+      <div class="color-swatch" style="background: #374151;"></div>
+      <div class="color-info">
+        <div class="color-name">Gris 700</div>
+        <div class="color-hex">#374151</div>
+        <div class="color-role">Texto secundario</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #6B7280;"></div>
+      <div class="color-info">
+        <div class="color-name">Gris 500</div>
+        <div class="color-hex">#6B7280</div>
+        <div class="color-role">Labels, meta</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #D1D5DB;"></div>
+      <div class="color-info">
+        <div class="color-name">Gris 300</div>
+        <div class="color-hex">#D1D5DB</div>
+        <div class="color-role">Bordes suaves</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #E5E7EB; border-bottom: 1px solid #D1D5DB;"></div>
+      <div class="color-info">
+        <div class="color-name">Gris 200</div>
+        <div class="color-hex">#E5E7EB</div>
+        <div class="color-role">Separadores, bordes</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Colores funcionales</div>
+  <div class="grid-3" style="margin-top: 16px;">
+    <div class="color-card">
+      <div class="color-swatch" style="background: #059669;"></div>
+      <div class="color-info">
+        <div class="color-name">Verde Exito</div>
+        <div class="color-hex">#059669</div>
+        <div class="color-role">Dot del logo, disponible, check</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #DC2626;"></div>
+      <div class="color-info">
+        <div class="color-name">Rojo Error</div>
+        <div class="color-hex">#DC2626</div>
+        <div class="color-role">Error, ilegal, cancelado</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #D97706;"></div>
+      <div class="color-info">
+        <div class="color-name">Amarillo Alerta</div>
+        <div class="color-hex">#D97706</div>
+        <div class="color-role">Advertencia, pendiente</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ TIPOGRAFIA ═══════════════ -->
+<section id="tipografia">
+  <div class="section-label">04 — Tipografia</div>
+  <div class="section-title">Inter — Unica familia</div>
+  <div class="section-desc">
+    Inter es la tipografia de todo el sistema. Familia sans-serif disenada para pantallas, con excelente legibilidad en tamanos chicos y caracter neutro pero solido. Consistente con la filosofia "Clean Map": sin ruido, pura funcion.
+  </div>
+
+  <!-- Weights -->
+  <div class="type-specimen">
+    <div class="type-weight-label">Black — 900</div>
+    <div class="type-sample" style="font-size: 48px; font-weight: 900; letter-spacing: -2px;">Spotto<span class="dot"></span></div>
+    <div class="type-meta">Logo, titulos hero, precios destacados</div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-weight-label">Extrabold — 800</div>
+    <div class="type-sample" style="font-size: 36px; font-weight: 800; letter-spacing: -1px;">Hola, Nahuel!</div>
+    <div class="type-meta">Titulos de seccion, nombres de pantalla</div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-weight-label">Bold — 700</div>
+    <div class="type-sample" style="font-size: 20px; font-weight: 700;">Argerich 3095</div>
+    <div class="type-meta">Nombres de spots, subtitulos, card titles</div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-weight-label">Semibold — 600</div>
+    <div class="type-sample" style="font-size: 16px; font-weight: 600;">MODO CONDUCTOR</div>
+    <div class="type-meta">Labels, badges, uppercase small text</div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-weight-label">Medium — 500</div>
+    <div class="type-sample" style="font-size: 15px; font-weight: 500;">Villa del Parque - 350m - 4.9</div>
+    <div class="type-meta">Metadata, info secundaria, navegacion</div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-weight-label">Regular — 400</div>
+    <div class="type-sample" style="font-size: 14px; font-weight: 400; color: var(--gris-600);">Mano derecha. Cerca de Av. Nazca. Cancelacion gratuita hasta 15 min antes.</div>
+    <div class="type-meta">Cuerpo, descripciones, texto largo</div>
+  </div>
+
+  <!-- Escala tipografica -->
+  <div style="margin-top: 48px;">
+    <div class="section-label">Escala tipografica</div>
+    <div style="background: var(--blanco); border: 1px solid var(--gris-200); border-radius: 16px; padding: 32px; margin-top: 16px;">
+      <div class="scale-row">
+        <span class="scale-label">Display / 36px</span>
+        <span style="font-size: 36px; font-weight: 800; letter-spacing: -1px;">$58.400,50</span>
+      </div>
+      <div class="scale-row">
+        <span class="scale-label">H1 / 28px</span>
+        <span style="font-size: 28px; font-weight: 800; letter-spacing: -0.5px;">Hola, Nahuel!</span>
+      </div>
+      <div class="scale-row">
+        <span class="scale-label">H2 / 20px</span>
+        <span style="font-size: 20px; font-weight: 700;">Argerich 3095</span>
+      </div>
+      <div class="scale-row">
+        <span class="scale-label">H3 / 16px</span>
+        <span style="font-size: 16px; font-weight: 700;">Confirmar pago con</span>
+      </div>
+      <div class="scale-row">
+        <span class="scale-label">Body / 15px</span>
+        <span style="font-size: 15px; font-weight: 400;">Tus activos estan generando valor hoy.</span>
+      </div>
+      <div class="scale-row">
+        <span class="scale-label">Small / 13px</span>
+        <span style="font-size: 13px; font-weight: 500; color: var(--gris-600);">Villa del Parque - Hoy, 10:00 - 12:00</span>
+      </div>
+      <div class="scale-row">
+        <span class="scale-label">Caption / 11px</span>
+        <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--gris-500);">MODO ANFITRION</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ TONO ═══════════════ -->
+<section id="tono">
+  <div class="section-label">05 — Tono de voz</div>
+  <div class="section-title">Como habla Spotto</div>
+  <div class="section-desc">
+    Cercano, porteno, ingenioso pero confiable. No somos un parking corporativo; somos parte del barrio. El tono se adapta al contexto pero siempre mantiene la esencia.
+  </div>
+
+  <div style="margin-bottom: 32px;">
+    <div class="section-label">Atributos de voz</div>
+    <div style="margin-top: 12px;">
+      <span class="tone-tag">Directo</span>
+      <span class="tone-tag">Practico</span>
+      <span class="tone-tag">Cercano</span>
+      <span class="tone-tag">Confiable</span>
+      <span class="tone-tag">Porteno sin exagerar</span>
+      <span class="tone-tag">Ingenioso sin forzar</span>
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 32px;">
+    <div class="tone-card">
+      <div class="tone-do">ASI SI</div>
+      <div class="tone-example">"Encontra tu lugar en 2 toques."</div>
+      <p style="font-size: 12px; color: var(--gris-500); margin-top: 8px;">Directo, util, sin vueltas.</p>
+    </div>
+    <div class="tone-card">
+      <div class="tone-dont">ASI NO</div>
+      <div class="tone-example">"Nuestra innovadora plataforma de estacionamiento inteligente te ofrece una experiencia unica."</div>
+      <p style="font-size: 12px; color: var(--gris-500); margin-top: 8px;">Corporativo, inflado, generico.</p>
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 32px;">
+    <div class="tone-card">
+      <div class="tone-do">ASI SI</div>
+      <div class="tone-example">"Ya tenes lugar reservado. Mano derecha, cerca de Av. Nazca."</div>
+      <p style="font-size: 12px; color: var(--gris-500); margin-top: 8px;">Info util, como te lo diria un vecino.</p>
+    </div>
+    <div class="tone-card">
+      <div class="tone-dont">ASI NO</div>
+      <div class="tone-example">"Su reserva ha sido procesada exitosamente. Consulte los detalles a continuacion."</div>
+      <p style="font-size: 12px; color: var(--gris-500); margin-top: 8px;">Robotico, frio, distante.</p>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="tone-card">
+      <div class="tone-do">ASI SI</div>
+      <div class="tone-example">"Tu garage genero $58.400 este mes. Nada mal, eh?"</div>
+      <p style="font-size: 12px; color: var(--gris-500); margin-top: 8px;">Celebra con el usuario, tono humano.</p>
+    </div>
+    <div class="tone-card">
+      <div class="tone-dont">ASI NO</div>
+      <div class="tone-example">"Felicitaciones!!! Has generado ingresos record!!! Sigue asi!!!"</div>
+      <p style="font-size: 12px; color: var(--gris-500); margin-top: 8px;">Exclamaciones de mas, falso entusiasmo.</p>
+    </div>
+  </div>
+
+  <!-- Contextos -->
+  <div style="margin-top: 48px;">
+    <div class="section-label">Tono por contexto</div>
+    <div class="grid-3" style="margin-top: 16px;">
+      <div class="tone-card">
+        <div class="value-name" style="font-size: 15px;">En la app</div>
+        <div class="value-desc">Funcional y conciso. La interfaz habla con el menor texto posible. Cada palabra tiene que aportar.</div>
+      </div>
+      <div class="tone-card">
+        <div class="value-name" style="font-size: 15px;">Bot de WhatsApp</div>
+        <div class="value-desc">Conversacional y claro. Como un vecino que te da indicaciones por mensaje. Podes tutear.</div>
+      </div>
+      <div class="tone-card">
+        <div class="value-name" style="font-size: 15px;">Redes sociales</div>
+        <div class="value-desc">Mas suelto, con humor porteno. Memes y situaciones identificables. Sin perder credibilidad.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ COMPONENTES UI ═══════════════ -->
+<section id="componentes">
+  <div class="section-label">06 — Componentes UI</div>
+  <div class="section-title">Sistema de diseno</div>
+  <div class="section-desc">
+    Los componentes siguen la filosofia Clean Map: bordes redondeados suaves, sin sombras fuertes, jerarquia clara. El negro como acento principal, grises para estructura.
+  </div>
+
+  <!-- Buttons -->
+  <div class="section-label">Botones</div>
+  <div style="display: flex; gap: 16px; align-items: center; margin-top: 16px; margin-bottom: 48px; flex-wrap: wrap;">
+    <span class="btn-primary">PAGAR</span>
+    <span class="btn-primary" style="background: var(--negro); border-radius: 12px;">Reservar spot</span>
+    <span class="btn-secondary">Cancelar</span>
+    <span class="btn-secondary" style="border-color: var(--negro);">RETIRAR</span>
+    <span class="btn-ghost">Ver mas</span>
+  </div>
+
+  <!-- Cards -->
+  <div class="section-label">Cards</div>
+  <div class="grid-3" style="margin-top: 16px; margin-bottom: 48px;">
+    <div style="background: var(--blanco); border: 1px solid var(--gris-200); border-radius: 12px; padding: 20px;">
+      <div style="display: flex; justify-content: space-between; align-items: start;">
+        <div>
+          <div style="font-size: 16px; font-weight: 700;">Argerich 3095</div>
+          <div style="font-size: 13px; color: var(--gris-500); margin-top: 2px;">Villa del Parque - 350m</div>
+          <div style="font-size: 13px; color: var(--gris-500);">&#9733; 4.9</div>
+        </div>
+        <span class="app-available">Disponible</span>
+      </div>
+      <div style="font-size: 20px; font-weight: 800; margin-top: 12px;">$1.500/h</div>
+    </div>
+
+    <div style="background: var(--blanco); border: 1px solid var(--gris-200); border-radius: 12px; padding: 20px;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <div style="font-size: 14px; font-weight: 600;">Toyota Corolla</div>
+          <div style="font-size: 12px; color: var(--gris-500);">Hace 2hs</div>
+        </div>
+        <div style="font-size: 16px; font-weight: 700; color: var(--success);">+$1.500</div>
+      </div>
+    </div>
+
+    <div style="background: var(--blanco); border: 1px solid var(--gris-200); border-radius: 12px; padding: 20px;">
+      <div style="display: flex; justify-content: space-between; align-items: start;">
+        <div>
+          <div style="font-size: 14px; font-weight: 700;">Argerich 3095</div>
+          <div style="font-size: 12px; color: var(--gris-500);">Villa del Parque - Hoy, 10:00 - 12:00</div>
+        </div>
+        <div style="font-size: 16px; font-weight: 700;">$3.075,00</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Badges -->
+  <div class="section-label">Badges y estados</div>
+  <div style="display: flex; gap: 12px; align-items: center; margin-top: 16px; margin-bottom: 48px; flex-wrap: wrap;">
+    <span class="app-available">Disponible</span>
+    <span style="display: inline-block; background: #FEF3C7; color: #92400E; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px;">Reservado</span>
+    <span style="display: inline-block; background: #FEE2E2; color: #991B1B; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px;">No disponible</span>
+    <span style="display: inline-block; background: var(--negro); color: var(--blanco); font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 6px; letter-spacing: 0.5px;">&#9733; 4.9 (128)</span>
+    <span style="display: inline-block; background: var(--success); color: var(--blanco); font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px;">&#10003; SALIDA DE GARAGE</span>
+  </div>
+
+  <!-- Balance card -->
+  <div class="section-label">Balance card (Anfitrion)</div>
+  <div style="max-width: 360px; margin-top: 16px; background: var(--negro); border-radius: 16px; padding: 24px; color: var(--blanco);">
+    <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--gris-400); font-weight: 600; margin-bottom: 8px;">Balance disponible</div>
+    <div style="font-size: 36px; font-weight: 800; letter-spacing: -1px; margin-bottom: 16px;">$58.400,50</div>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <span style="font-size: 13px; color: var(--gris-400);">14 reservas este mes</span>
+      <span style="background: var(--blanco); color: var(--negro); font-size: 13px; font-weight: 700; padding: 8px 20px; border-radius: 8px;">RETIRAR</span>
+    </div>
+  </div>
+
+  <!-- Spacing -->
+  <div style="margin-top: 48px;">
+    <div class="section-label">Espaciado</div>
+    <p style="font-size: 14px; color: var(--gris-600); margin-bottom: 24px;">
+      Sistema de 8px base. Multiplos de 4 para ajustes finos.
+    </p>
+    <div class="spacing-demo">
+      <div style="text-align: center;">
+        <div class="spacing-block" style="width: 16px; height: 16px;"></div>
+        <div class="spacing-label">4px</div>
+      </div>
+      <div style="text-align: center;">
+        <div class="spacing-block" style="width: 24px; height: 24px;"></div>
+        <div class="spacing-label">8px</div>
+      </div>
+      <div style="text-align: center;">
+        <div class="spacing-block" style="width: 32px; height: 32px;"></div>
+        <div class="spacing-label">12px</div>
+      </div>
+      <div style="text-align: center;">
+        <div class="spacing-block" style="width: 40px; height: 40px;"></div>
+        <div class="spacing-label">16px</div>
+      </div>
+      <div style="text-align: center;">
+        <div class="spacing-block" style="width: 56px; height: 56px;"></div>
+        <div class="spacing-label">24px</div>
+      </div>
+      <div style="text-align: center;">
+        <div class="spacing-block" style="width: 72px; height: 72px;"></div>
+        <div class="spacing-label">32px</div>
+      </div>
+      <div style="text-align: center;">
+        <div class="spacing-block" style="width: 96px; height: 96px;"></div>
+        <div class="spacing-label">48px</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Border radius -->
+  <div style="margin-top: 48px;">
+    <div class="section-label">Border radius</div>
+    <div style="display: flex; gap: 24px; align-items: flex-end; margin-top: 16px;">
+      <div style="text-align: center;">
+        <div style="width: 60px; height: 60px; background: var(--negro); border-radius: 4px;"></div>
+        <div class="spacing-label" style="margin-top: 8px;">4px — Badges</div>
+      </div>
+      <div style="text-align: center;">
+        <div style="width: 60px; height: 60px; background: var(--negro); border-radius: 8px;"></div>
+        <div class="spacing-label" style="margin-top: 8px;">8px — Inputs</div>
+      </div>
+      <div style="text-align: center;">
+        <div style="width: 60px; height: 60px; background: var(--negro); border-radius: 12px;"></div>
+        <div class="spacing-label" style="margin-top: 8px;">12px — Cards, buttons</div>
+      </div>
+      <div style="text-align: center;">
+        <div style="width: 60px; height: 60px; background: var(--negro); border-radius: 16px;"></div>
+        <div class="spacing-label" style="margin-top: 8px;">16px — Feature cards</div>
+      </div>
+      <div style="text-align: center;">
+        <div style="width: 60px; height: 60px; background: var(--negro); border-radius: 30px;"></div>
+        <div class="spacing-label" style="margin-top: 8px;">Full — Pills, avatars</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ APLICACIONES ═══════════════ -->
+<section id="aplicaciones">
+  <div class="section-label">07 — Aplicaciones</div>
+  <div class="section-title">El logo en contexto</div>
+  <div class="section-desc">
+    Ejemplos de como se aplica el sistema visual en diferentes contextos y formatos.
+  </div>
+
+  <div class="grid-2">
+    <!-- App Preview Conductor -->
+    <div>
+      <div class="app-frame">
+        <div class="app-statusbar">
+          <span>9:41</span>
+          <span>100%</span>
+        </div>
+        <div class="app-greeting">&#9711; MODO CONDUCTOR</div>
+        <div class="app-title">Hola, Nahuel!</div>
+        <div class="app-subtitle">A donde vas hoy?</div>
+        <div class="app-searchbar">&#128269; A donde vas hoy, Nahuel?</div>
+        <div class="app-card">
+          <div style="display: flex; justify-content: space-between; align-items: start;">
+            <div>
+              <div class="app-card-title">Argerich 3095</div>
+              <div class="app-card-meta">Villa del Parque - 350m - &#9733; 4.9</div>
+            </div>
+            <span class="app-available">Disponible</span>
+          </div>
+          <div class="app-card-price">$1.500/h</div>
+        </div>
+        <div class="app-card">
+          <div style="display: flex; justify-content: space-between; align-items: start;">
+            <div>
+              <div class="app-card-title">Villa Tesei Garage</div>
+              <div class="app-card-meta">Hurlingham - 1.2km - &#9733; 5.0</div>
+            </div>
+            <span class="app-available">Disponible</span>
+          </div>
+          <div class="app-card-price">$1.200/h</div>
+        </div>
+        <div class="app-navbar">
+          <span class="active">Explorar</span>
+          <span>Actividad</span>
+          <span>Perfil</span>
+        </div>
+      </div>
+      <div class="logo-caption" style="margin-top: 24px;">Modo Conductor — Explorar</div>
+    </div>
+
+    <!-- App Preview Anfitrion -->
+    <div>
+      <div class="app-frame">
+        <div class="app-statusbar">
+          <span>9:41</span>
+          <span>100%</span>
+        </div>
+        <div class="app-greeting">&#9711; MODO ANFITRION</div>
+        <div class="app-title">Hola, Nahuel!</div>
+        <div class="app-subtitle">Tus activos estan generando valor hoy.</div>
+        <div style="background: var(--negro); border-radius: 16px; padding: 20px; color: var(--blanco); margin-bottom: 24px;">
+          <div style="font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: var(--gris-400); font-weight: 600; margin-bottom: 6px;">Balance disponible</div>
+          <div style="font-size: 28px; font-weight: 800; letter-spacing: -1px; margin-bottom: 12px;">$58.400,50</div>
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 12px; color: var(--gris-400);">14 reservas este mes</span>
+            <span style="background: var(--blanco); color: var(--negro); font-size: 12px; font-weight: 700; padding: 6px 16px; border-radius: 6px;">RETIRAR</span>
+          </div>
+        </div>
+        <div style="font-size: 14px; font-weight: 700; margin-bottom: 12px;">Ultimos ingresos</div>
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--gris-200);">
+          <div>
+            <div style="font-size: 14px; font-weight: 600;">Toyota Corolla</div>
+            <div style="font-size: 12px; color: var(--gris-500);">Hace 2hs</div>
+          </div>
+          <div style="font-size: 15px; font-weight: 700; color: var(--success);">+$1.500</div>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--gris-200);">
+          <div>
+            <div style="font-size: 14px; font-weight: 600;">Ford Fiesta</div>
+            <div style="font-size: 12px; color: var(--gris-500);">Hoy, 10:15</div>
+          </div>
+          <div style="font-size: 15px; font-weight: 700; color: var(--success);">+$1.500</div>
+        </div>
+        <div class="app-navbar">
+          <span class="active">Ganancias</span>
+          <span>Mis spots</span>
+          <span>Perfil</span>
+        </div>
+      </div>
+      <div class="logo-caption" style="margin-top: 24px;">Modo Anfitrion — Dashboard</div>
+    </div>
+  </div>
+
+  <!-- Social media -->
+  <div style="margin-top: 64px;">
+    <div class="section-label">Redes sociales</div>
+    <div class="grid-3" style="margin-top: 16px;">
+      <div style="background: var(--negro); border-radius: 12px; padding: 40px; text-align: center; aspect-ratio: 1;">
+        <div style="color: var(--blanco); font-size: 40px; font-weight: 900; letter-spacing: -2px; margin-bottom: 16px;">Spotto<span class="dot"></span></div>
+        <div style="color: var(--gris-400); font-size: 14px;">Tu lugar, a un toque.</div>
+      </div>
+      <div style="background: var(--blanco); border: 1px solid var(--gris-200); border-radius: 12px; padding: 40px; text-align: center; aspect-ratio: 1; display: flex; flex-direction: column; justify-content: center;">
+        <div style="font-size: 48px; font-weight: 900; letter-spacing: -2px; color: var(--negro); margin-bottom: 8px;">3</div>
+        <div style="font-size: 14px; color: var(--gris-600);">vueltas a la manzana buscando lugar tiene un nombre:</div>
+        <div style="font-size: 18px; font-weight: 700; margin-top: 12px;">martes.</div>
+      </div>
+      <div style="background: var(--gris-50); border: 1px solid var(--gris-200); border-radius: 12px; padding: 40px; text-align: center; aspect-ratio: 1; display: flex; flex-direction: column; justify-content: center;">
+        <div style="font-size: 32px; font-weight: 800; color: var(--negro); letter-spacing: -1px;">$1.200/h</div>
+        <div style="font-size: 14px; color: var(--gris-500); margin-top: 8px;">vs $3.500/h garage tradicional</div>
+        <div style="margin-top: 16px; font-size: 13px; font-weight: 700; color: var(--success);">Ahorra un 66%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Watermark -->
+  <div style="margin-top: 48px;">
+    <div class="section-label">Marca de agua en mapa</div>
+    <div style="background: #E8E8E8; border-radius: 12px; padding: 80px; text-align: center; position: relative;">
+      <div style="font-size: 12px; color: var(--gris-400); margin-bottom: 16px;">[Vista de mapa]</div>
+      <div style="position: absolute; bottom: 16px; right: 20px; font-size: 20px; font-weight: 900; color: rgba(0,0,0,0.08); letter-spacing: -1px;">Spotto<span style="color: rgba(0,0,0,0.05);">.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ DONTS ═══════════════ -->
+<section id="donts">
+  <div class="section-label">08 — Usos incorrectos</div>
+  <div class="section-title">Lo que nunca hay que hacer</div>
+  <div class="section-desc">
+    El logo y la identidad de Spotto deben mantenerse consistentes. Estos son los errores mas comunes a evitar.
+  </div>
+
+  <div class="grid-4">
+    <div class="dont-card">
+      <div class="example">
+        <span style="font-size: 32px; font-weight: 900; letter-spacing: -1px; color: #3B82F6;">Spotto<span style="color: #93C5FD;">.</span></span>
+      </div>
+      <div class="label">No cambiar colores</div>
+      <div class="desc">Usar solo las versiones aprobadas</div>
+    </div>
+    <div class="dont-card">
+      <div class="example">
+        <span style="font-size: 32px; font-weight: 900; letter-spacing: -1px; transform: skewX(-10deg); display: inline-block;">Spotto<span style="color: var(--gris-300);">.</span></span>
+      </div>
+      <div class="label">No distorsionar</div>
+      <div class="desc">No estirar, rotar ni deformar</div>
+    </div>
+    <div class="dont-card">
+      <div class="example">
+        <span style="font-size: 32px; font-weight: 900; letter-spacing: -1px; text-shadow: 3px 3px 6px rgba(0,0,0,0.3);">Spotto<span style="color: var(--gris-300);">.</span></span>
+      </div>
+      <div class="label">No agregar sombras</div>
+      <div class="desc">Sin efectos, gradientes o contornos</div>
+    </div>
+    <div class="dont-card">
+      <div class="example">
+        <span style="font-size: 32px; font-weight: 900; letter-spacing: -1px;">Spotto</span>
+      </div>
+      <div class="label">No quitar el punto</div>
+      <div class="desc">El dot es parte integral del logo</div>
+    </div>
+    <div class="dont-card">
+      <div class="example">
+        <span style="font-size: 32px; font-weight: 400; letter-spacing: -1px;">Spotto<span style="color: var(--gris-300);">.</span></span>
+      </div>
+      <div class="label">No cambiar el peso</div>
+      <div class="desc">Siempre Inter Black (900)</div>
+    </div>
+    <div class="dont-card">
+      <div class="example" style="background: repeating-linear-gradient(45deg, #FF6B6B, #FF6B6B 10px, #4ECDC4 10px, #4ECDC4 20px); border-radius: 8px; padding: 8px;">
+        <span style="font-size: 32px; font-weight: 900; letter-spacing: -1px; color: white;">Spotto<span style="color: rgba(255,255,255,0.5);">.</span></span>
+      </div>
+      <div class="label">No usar fondos ruidosos</div>
+      <div class="desc">Solo sobre fondos neutros y solidos</div>
+    </div>
+    <div class="dont-card">
+      <div class="example">
+        <span style="font-size: 32px; font-weight: 900; letter-spacing: 8px;">S p o t t o<span style="color: var(--gris-300);">.</span></span>
+      </div>
+      <div class="label">No alterar espaciado</div>
+      <div class="desc">Respetar el tracking original</div>
+    </div>
+    <div class="dont-card">
+      <div class="example">
+        <span style="font-size: 32px; font-family: 'Georgia', serif; font-weight: 900; letter-spacing: -1px;">Spotto<span style="color: var(--gris-300);">.</span></span>
+      </div>
+      <div class="label">No cambiar tipografia</div>
+      <div class="desc">Siempre Inter, nunca otra fuente</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<section style="background: var(--negro); color: var(--blanco); text-align: center; padding: 80px 64px;">
+  <div style="font-size: 48px; font-weight: 900; letter-spacing: -2px; margin-bottom: 16px;">Spotto<span class="dot"></span></div>
+  <div style="font-size: 14px; color: var(--gris-500); margin-bottom: 8px;">Brandbook v1.0 — Clean Map</div>
+  <div style="font-size: 12px; color: var(--gris-600);">Marzo 2026 — Buenos Aires, Argentina</div>
+  <div style="font-size: 11px; color: var(--gris-700); margin-top: 24px;">Documento confidencial. No distribuir sin autorizacion.</div>
+</section>
+
+</main>
+</body>
+</html>
